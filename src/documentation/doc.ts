@@ -4,9 +4,9 @@ const DEFAULT_OUTPUT_FILE = './dist/doc/output/output.md'
 
 export class Doc {
     private fileLocation: string;
-    private file: Buffer;
+    private file?: Buffer;
 
-    private generated: string[];
+    private generated: string[] = [];
 
     // Here the output file will be given
     constructor(filePath: string) {

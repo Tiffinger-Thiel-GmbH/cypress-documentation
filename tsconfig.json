@@ -6,7 +6,9 @@
         "baseUrl": "./",
         "outDir": "./",
         "types": ["cypress", "node"],
+        "strict": true,
         "importHelpers": true,
+        "declaration": true,
         "typeRoots": [
             "src/types"
         ],

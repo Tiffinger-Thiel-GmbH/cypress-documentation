@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Cypress plugin to generate handbooks",
   "main": "index.js",
-  "typings": "src/types/commands.d.ts",
+  "typings": "src/types/main.d.ts",
   "files": [
     "**/*.js",
     "index.d.ts",

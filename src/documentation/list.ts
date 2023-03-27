@@ -1,7 +1,7 @@
 export class UList  {
 
     private uListName: string;
-    private listElements: []
+    private listElements: [] = []
 
 
     constructor(uListName: string) {
