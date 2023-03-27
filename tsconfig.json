@@ -1,8 +1,21 @@
 {
     "compilerOptions": {
-        "module": "es6",
-        "target": "es5",
-        "moduleResolution": "node"        
+        "module": "ES2015",
+        "target": "ES2017",
+        "moduleResolution": "node",
+        "baseUrl": "./",
+        "outDir": "./",
+        "types": ["cypress", "node"],
+        "importHelpers": true,
+        "typeRoots": [
+            "src/types"
+        ],
+        "paths": {
+            "@tiffinger-thiel/cy-handbook": ["./src/"],
+            "@tiffinger-thiel/cy-handbook/*": ["src/*"] 
+        },
     },
+    "include": ["src/**/*.ts"],
+    "exclude": ["node_modules/**"]
 
 }

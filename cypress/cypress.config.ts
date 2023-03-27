@@ -1,10 +1,11 @@
 import { defineConfig } from "cypress";
 
-export default defineConfig({  
+export default defineConfig({
     e2e: {
         setupNodeEvents(on, config) {
-            on('before:spec',(spec) => {
-                
+            on('before:spec', (spec) => {
+                require('index.ts')(spec)
+
             })
         },
     }
