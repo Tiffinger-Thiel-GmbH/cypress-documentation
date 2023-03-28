@@ -1,4 +1,4 @@
-import { readFile } from "fs/promises";
+import { readFileSync } from "fs";
 
 const DEFAULT_OUTPUT_FILE = './dist/doc/output/output.md'
 
@@ -11,11 +11,11 @@ export class Doc {
     // Here the output file will be given
     constructor(filePath: string) {
         this.fileLocation = filePath;
+        this.file = readFileSync(this.fileLocation);
 
-        readFile(filePath).then(buffer => {
-            this.file = buffer;
-        }).catch(e => { throw e });
+        console.log(this.fileLocation);
 
+        console.log("successfully file loaded")
     }
 
     public header(text: string) {
