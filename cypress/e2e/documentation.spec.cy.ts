@@ -26,6 +26,10 @@ describe("create documentation", () => {
       cy.docImage(doc, "cypress/screenshots/haw-landshut.png");
     });
 
+    cy.docText(doc, "Now the link to the homepage HAW-Landshut");
+
+    cy.docLink(doc, "Hier zur Hochschulwebsite", "https://haw-landshut.de/");
+
     cy.docText(doc, "After screenshot was taken");
     // This has to be the last call.
     // This write the documentation markdown file

@@ -16,6 +16,10 @@ Cypress.Commands.add("docImage", (doc: Doc, imagePath: string) => {
   doc.screenshot(imagePath);
 });
 
+Cypress.Commands.add("docLink", (doc: Doc, text: string, url: string) => {
+  doc.link(text, url);
+});
+
 Cypress.Commands.add("docWrite", (doc: Doc, filePath: string) => {
   cy.writeFile(filePath, doc.doc);
   cy.log(`Documentation file written to ${filePath}`);

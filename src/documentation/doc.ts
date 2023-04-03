@@ -19,6 +19,10 @@ export class Doc {
     this.generated.push(`![sceenshot](${imagePath})`);
   }
 
+  public link(text: string, url: string) {
+    this.generated.push(`[${text}](${url})`);
+  }
+
   get doc() {
     return this.generated.reduce((prev, cur) => prev + "\n\n" + cur);
   }
