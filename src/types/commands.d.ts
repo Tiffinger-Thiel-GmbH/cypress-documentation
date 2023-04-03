@@ -11,7 +11,7 @@ declare namespace Cypress {
     ): Chainable<any>;
     docImage(
       doc: import("../documentation/doc").Doc,
-      image: Blob
+      imagePath: string
     ): Chainable<any>;
     docAlert(
       doc: import("../documentation/doc").Doc,
@@ -20,6 +20,12 @@ declare namespace Cypress {
     docWrite(
       doc: import("../documentation/doc").Doc,
       filePath: string
+    ): Chainable<any>;
+
+    docLink(
+      doc: import("../documentation/doc").Doc,
+      text: string,
+      link: string
     ): Chainable<any>;
   }
 }

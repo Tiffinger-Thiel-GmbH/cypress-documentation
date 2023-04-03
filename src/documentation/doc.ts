@@ -14,6 +14,11 @@ export class Doc {
     this.generated.push(`> ${text}`);
   }
 
+  public screenshot(imagePath: string) {
+    console.log(imagePath);
+    this.generated.push(`![sceenshot](${imagePath})`);
+  }
+
   get doc() {
     return this.generated.reduce((prev, cur) => prev + "\n\n" + cur);
   }
