@@ -1,26 +1,72 @@
+import * as ejs from "ejs";
+
 export class Doc {
+  private readonly templateTextPath: string;
+  private readonly templateHeaderPath: string;
+  private readonly templateImagePath: string;
+  private readonly templateAlertPath: string;
+  private readonly templateLinkPath: string;
   private generated: string[] = [];
 
-  public header(text: string) {
-    const header = `# ${text}`;
-    this.generated.push(header);
+  constructor(templateFile: Props) {
+    this.templateTextPath =
+      templateFile.templateTextPath ||
+      "./cypress/template/components/paragraph.ejs";
+    this.templateHeaderPath =
+      templateFile.templateHeaderPath ||
+      "./cypress/template/components/header.ejs";
+    this.templateImagePath =
+      templateFile.templateImagePath ||
+      "./cypress/template/components/image.ejs";
+    this.templateAlertPath =
+      templateFile.templateAlertPath ||
+      "./cypress/template/components/alert.ejs";
+    this.templateLinkPath =
+      templateFile.templateLinkPath || "./cypress/template/components/link.ejs";
   }
+
   public text(text: string) {
-    const t = `${text}`;
-    this.generated.push(t);
+    ejs.renderFile(this.templateTextPath, { text }, (err, str) => {
+      if (err) {
+        throw err;
+      }
+      this.generated.push(str);
+    });
+  }
+  public header(text: string) {
+    ejs.renderFile(this.templateHeaderPath, { text }, (err, str) => {
+      if (err) {
+        throw err;
+      }
+      this.generated.push(str);
+    });
   }
 
   public alert(text: string) {
-    this.generated.push(`> ${text}`);
+    ejs.renderFile(this.templateAlertPath, { text }, (err, str) => {
+      if (err) {
+        throw err;
+      }
+      this.generated.push(str);
+    });
   }
 
-  public screenshot(imagePath: string) {
-    console.log(imagePath);
-    this.generated.push(`![sceenshot](${imagePath})`);
+  public screenshot(imageUrl: string) {
+    ejs.renderFile(this.templateImagePath, { imageUrl }, (err, str) => {
+      if (err) {
+        throw err;
+      }
+      this.generated.push(str);
+    });
   }
 
   public link(text: string, url: string) {
-    this.generated.push(`[${text}](${url})`);
+    ejs.renderFile(this.templateLinkPath, { text, url }, (err, str) => {
+      if (err) {
+        throw err;
+      }
+      this.generated.push(str);
+    });
   }
 
   get doc() {

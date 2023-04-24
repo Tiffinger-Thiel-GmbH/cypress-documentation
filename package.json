@@ -29,9 +29,8 @@
     "eslint": "^8.34.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "typescript": "^4.9.5"
-  },
-  "dependencies": {
+    "typescript": "^4.9.5",
     "ejs": "^3.1.9"
+
   }
 }

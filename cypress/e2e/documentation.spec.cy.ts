@@ -1,6 +1,6 @@
 import { Doc } from "../../src/documentation/doc";
 
-const doc = new Doc();
+const doc = new Doc(__dirname + "../template/documentPage");
 
 describe("create documentation", () => {
   it("should created a file", () => {
