@@ -29,10 +29,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",\
           "packageDependencies": [\
             ["@types/cypress", "npm:1.1.3"],\
+            ["@types/ejs", "npm:3.1.2"],\
             ["@types/node", "npm:18.15.10"],\
             ["@typescript-eslint/eslint-plugin", "virtual:d95a2557bc86a23ddaea814166dc699f518d048d1c42620d8e351860f3dad0cd6582e5a66991ef0fc3accbded866a9b4ba25bff17d2cd5abcde3e923ed38d35a#npm:5.57.0"],\
             ["@typescript-eslint/parser", "virtual:d95a2557bc86a23ddaea814166dc699f518d048d1c42620d8e351860f3dad0cd6582e5a66991ef0fc3accbded866a9b4ba25bff17d2cd5abcde3e923ed38d35a#npm:5.57.0"],\
             ["cypress", "npm:12.8.1"],\
+            ["ejs", "npm:3.1.9"],\
             ["eslint", "npm:8.36.0"],\
             ["eslint-config-prettier", "virtual:d95a2557bc86a23ddaea814166dc699f518d048d1c42620d8e351860f3dad0cd6582e5a66991ef0fc3accbded866a9b4ba25bff17d2cd5abcde3e923ed38d35a#npm:8.8.0"],\
             ["eslint-plugin-prettier", "virtual:d95a2557bc86a23ddaea814166dc699f518d048d1c42620d8e351860f3dad0cd6582e5a66991ef0fc3accbded866a9b4ba25bff17d2cd5abcde3e923ed38d35a#npm:4.2.1"],\
@@ -214,10 +216,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@tiffinger-thiel/cy-handbook", "workspace:."],\
             ["@types/cypress", "npm:1.1.3"],\
+            ["@types/ejs", "npm:3.1.2"],\
             ["@types/node", "npm:18.15.10"],\
             ["@typescript-eslint/eslint-plugin", "virtual:d95a2557bc86a23ddaea814166dc699f518d048d1c42620d8e351860f3dad0cd6582e5a66991ef0fc3accbded866a9b4ba25bff17d2cd5abcde3e923ed38d35a#npm:5.57.0"],\
             ["@typescript-eslint/parser", "virtual:d95a2557bc86a23ddaea814166dc699f518d048d1c42620d8e351860f3dad0cd6582e5a66991ef0fc3accbded866a9b4ba25bff17d2cd5abcde3e923ed38d35a#npm:5.57.0"],\
             ["cypress", "npm:12.8.1"],\
+            ["ejs", "npm:3.1.9"],\
             ["eslint", "npm:8.36.0"],\
             ["eslint-config-prettier", "virtual:d95a2557bc86a23ddaea814166dc699f518d048d1c42620d8e351860f3dad0cd6582e5a66991ef0fc3accbded866a9b4ba25bff17d2cd5abcde3e923ed38d35a#npm:8.8.0"],\
             ["eslint-plugin-prettier", "virtual:d95a2557bc86a23ddaea814166dc699f518d048d1c42620d8e351860f3dad0cd6582e5a66991ef0fc3accbded866a9b4ba25bff17d2cd5abcde3e923ed38d35a#npm:4.2.1"],\
@@ -232,6 +236,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@types/cypress", "npm:1.1.3"],\
             ["cypress", "npm:12.8.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/ejs", [\
+        ["npm:3.1.2", {\
+          "packageLocation": "./.yarn/cache/@types-ejs-npm-3.1.2-0bea2b09aa-e4f0745b6e.zip/node_modules/@types/ejs/",\
+          "packageDependencies": [\
+            ["@types/ejs", "npm:3.1.2"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -756,6 +769,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["concat-map", "npm:0.0.1"]\
           ],\
           "linkType": "HARD"\
+        }],\
+        ["npm:2.0.1", {\
+          "packageLocation": "./.yarn/cache/brace-expansion-npm-2.0.1-17aa2616f9-a61e7cd2e8.zip/node_modules/brace-expansion/",\
+          "packageDependencies": [\
+            ["brace-expansion", "npm:2.0.1"],\
+            ["balanced-match", "npm:1.0.2"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["braces", [\
@@ -1159,6 +1180,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["ejs", [\
+        ["npm:3.1.9", {\
+          "packageLocation": "./.yarn/cache/ejs-npm-3.1.9-e201b2088c-af6f10eb81.zip/node_modules/ejs/",\
+          "packageDependencies": [\
+            ["ejs", "npm:3.1.9"],\
+            ["jake", "npm:10.8.5"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["emoji-regex", [\
         ["npm:8.0.0", {\
           "packageLocation": "./.yarn/cache/emoji-regex-npm-8.0.0-213764015c-d4c5c39d5a.zip/node_modules/emoji-regex/",\
@@ -1546,6 +1577,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["file-entry-cache", "npm:6.0.1"],\
             ["flat-cache", "npm:3.0.4"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["filelist", [\
+        ["npm:1.0.4", {\
+          "packageLocation": "./.yarn/cache/filelist-npm-1.0.4-3a835ae0a7-a303573b08.zip/node_modules/filelist/",\
+          "packageDependencies": [\
+            ["filelist", "npm:1.0.4"],\
+            ["minimatch", "npm:5.1.6"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -2008,6 +2049,19 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["jake", [\
+        ["npm:10.8.5", {\
+          "packageLocation": "./.yarn/cache/jake-npm-10.8.5-6a5e87e533-56c913ecf5.zip/node_modules/jake/",\
+          "packageDependencies": [\
+            ["jake", "npm:10.8.5"],\
+            ["async", "npm:3.2.4"],\
+            ["chalk", "npm:4.1.2"],\
+            ["filelist", "npm:1.0.4"],\
+            ["minimatch", "npm:3.1.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["js-sdsl", [\
         ["npm:4.4.0", {\
           "packageLocation": "./.yarn/cache/js-sdsl-npm-4.4.0-e8ec19da4a-7bb08a2d74.zip/node_modules/js-sdsl/",\
@@ -2280,6 +2334,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["minimatch", "npm:3.1.2"],\
             ["brace-expansion", "npm:1.1.11"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:5.1.6", {\
+          "packageLocation": "./.yarn/cache/minimatch-npm-5.1.6-1e71429f4c-7564208ef8.zip/node_modules/minimatch/",\
+          "packageDependencies": [\
+            ["minimatch", "npm:5.1.6"],\
+            ["brace-expansion", "npm:2.0.1"]\
           ],\
           "linkType": "HARD"\
         }]\

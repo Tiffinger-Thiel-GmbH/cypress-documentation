@@ -30,6 +30,9 @@ declare namespace Cypress {
      *
      * @todo - Add templates later
      *
+     * @example
+     * cy.docImage(doc, "path/to/image.{jpg|png|...}")
+     *
      * @param doc - Documentation instance
      * @param text
      */
