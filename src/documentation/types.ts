@@ -4,4 +4,5 @@ interface Props {
   templateImagePath?: string;
   templateAlertPath?: string;
   templateLinkPath?: string;
+  templateBodyPath?: string;
 }

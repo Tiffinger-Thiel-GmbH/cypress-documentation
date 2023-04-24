@@ -5,7 +5,9 @@ Cypress.Commands.add("docHeader", (doc: Doc, text: string) => {
 });
 
 Cypress.Commands.add("docText", (doc: Doc, text: string) => {
-  doc.text(text);
+  cy.readFile(__dirname + doc.templateTextPath).then((str) => {
+    doc.text(str, text);
+  });
 });
 
 Cypress.Commands.add("docAlert", (doc: Doc, text: string) => {
@@ -21,6 +23,9 @@ Cypress.Commands.add("docLink", (doc: Doc, text: string, url: string) => {
 });
 
 Cypress.Commands.add("docWrite", (doc: Doc, filePath: string) => {
-  cy.writeFile(filePath, doc.doc);
-  cy.log(`Documentation file written to ${filePath}`);
+  cy.readFile(__dirname + doc.templateBodyPath).then((str) => {
+    const html = doc.generate(str);
+    cy.writeFile(filePath, html);
+    cy.log(`Documentation file written to ${filePath}`);
+  });
 });
