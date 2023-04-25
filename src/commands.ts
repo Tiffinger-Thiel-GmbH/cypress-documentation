@@ -1,4 +1,5 @@
 import { Doc } from "./documentation/doc";
+import { UList } from "./documentation/UList";
 
 Cypress.Commands.add("docHeader", (doc: Doc, text: string) => {
   cy.readFile(__dirname + doc.templateHeaderPath).then((str) => {
@@ -37,3 +38,8 @@ Cypress.Commands.add("docWrite", (doc: Doc, filePath: string) => {
     cy.log(`Documentation file written to ${filePath}`);
   });
 });
+
+Cypress.Commands.add(
+  "docUList",
+  (doc: Doc, listCb: (ulist: UList) => void) => {}
+);

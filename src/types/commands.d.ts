@@ -1,4 +1,5 @@
 /// <reference types="cypress" />
+
 declare namespace Cypress {
   interface Chainable<Subject> {
     /**
@@ -8,6 +9,10 @@ declare namespace Cypress {
      *
      * @param doc - Documentation instance
      * @param text
+     *
+     * @example
+     *
+     * cy.docHeader(doc, "Some heading text")
      */
     docHeader(
       doc: import("../documentation/doc").Doc,
@@ -23,7 +28,7 @@ declare namespace Cypress {
      *
      * @example
      *
-     * cy.doc(doc, "Some text")
+     * cy.docText(doc, "Some text")
      */
     docText(
       doc: import("../documentation/doc").Doc,
@@ -36,6 +41,10 @@ declare namespace Cypress {
      *
      * @param doc - Documentation instance
      * @param text
+     *
+     * @example
+     *
+     * cy.docImage(doc, "path/to/image.{png|jpg|..}")
      */
     docImage(
       doc: import("../documentation/doc").Doc,
@@ -48,6 +57,10 @@ declare namespace Cypress {
      *
      * @param doc - Documentation instance
      * @param text
+     *
+     * @example
+     *
+     * cy.docAlert(doc, "text in some alert style")
      */
     docAlert(
       doc: import("../documentation/doc").Doc,
@@ -60,6 +73,8 @@ declare namespace Cypress {
      *
      * @param doc - Documentation instance
      * @param text
+     *
+     * cy.docWrite(doc, "path/to/output/directory.html")
      */
     docWrite(
       doc: import("../documentation/doc").Doc,
@@ -73,11 +88,33 @@ declare namespace Cypress {
      *
      * @param doc - Documentation instance
      * @param text
+     *
+     * @example
+     *
+     * cy.docLink(doc, "http://some_url.de")
      */
     docLink(
       doc: import("../documentation/doc").Doc,
       text: string,
       url: string
+    ): Chainable<any>;
+
+    /**
+     * This will generate a List in html
+     *
+     * @param doc - Documentation instance
+     * @param listCb
+     *
+     * @example
+     *
+     * cy.docUList(doc, (uListDoc: Doc) => {
+     *  cy.docText(uListDoc, "Dies ist ein Text")
+     *  ...
+     * })
+     */
+    docUList(
+      doc: import("../documentation/doc").Doc,
+      listCb: () => import("../documentation/IList").IList
     ): Chainable<any>;
   }
 }
