@@ -1,7 +1,9 @@
 import { Doc } from "./documentation/doc";
 
 Cypress.Commands.add("docHeader", (doc: Doc, text: string) => {
-  doc.header(text);
+  cy.readFile(__dirname + doc.templateHeaderPath).then((str) => {
+    doc.header(str, text);
+  });
 });
 
 Cypress.Commands.add("docText", (doc: Doc, text: string) => {
@@ -11,15 +13,21 @@ Cypress.Commands.add("docText", (doc: Doc, text: string) => {
 });
 
 Cypress.Commands.add("docAlert", (doc: Doc, text: string) => {
-  doc.alert(text);
+  cy.readFile(__dirname + doc.templateAlertPath).then((str) => {
+    doc.alert(str, text);
+  });
 });
 
 Cypress.Commands.add("docImage", (doc: Doc, imagePath: string) => {
-  doc.screenshot(imagePath);
+  cy.readFile(__dirname + doc.templateImagePath).then((str) => {
+    doc.screenshot(str, imagePath);
+  });
 });
 
 Cypress.Commands.add("docLink", (doc: Doc, text: string, url: string) => {
-  doc.link(text, url);
+  cy.readFile(__dirname + doc.templateLinkPath).then((str) => {
+    doc.link(str, text, url);
+  });
 });
 
 Cypress.Commands.add("docWrite", (doc: Doc, filePath: string) => {

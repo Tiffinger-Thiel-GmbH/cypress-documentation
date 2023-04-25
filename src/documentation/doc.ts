@@ -38,13 +38,13 @@ export class Doc {
       "../../cypress/template/components/header.ejs";
     this._templateImagePath =
       templateFile?.templateImagePath ||
-      "./cypress/template/components/image.ejs";
+      "../../cypress/template/components/image.ejs";
     this._templateAlertPath =
       templateFile?.templateAlertPath ||
-      "./cypress/template/components/alert.ejs";
+      "../../cypress/template/components/alert.ejs";
     this._templateLinkPath =
       templateFile?.templateLinkPath ||
-      "./cypress/template/components/link.ejs";
+      "../../cypress/template/components/link.ejs";
 
     this._templateBodyPath =
       templateFile?.templateBodyPath ||
@@ -53,45 +53,26 @@ export class Doc {
 
   public text(template: string, text: string) {
     const html = ejs.render(template, { text });
-
-    console.log(html);
     this.generated.push(html);
   }
-  public header(text: string) {
-    console.log(this.templateHeaderPath);
-    ejs.renderFile(this.templateHeaderPath, { text }, (err, str) => {
-      if (err) {
-        throw err;
-      }
-      this.generated.push(str);
-    });
+  public header(template: string, header: string) {
+    const html = ejs.render(template, { header });
+    this.generated.push(html);
   }
 
-  public alert(text: string) {
-    ejs.renderFile(this.templateAlertPath, { text }, (err, str) => {
-      if (err) {
-        throw err;
-      }
-      this.generated.push(str);
-    });
+  public alert(template: string, text: string) {
+    const html = ejs.render(template, { text });
+    this.generated.push(html);
   }
 
-  public screenshot(imageUrl: string) {
-    ejs.renderFile(this.templateImagePath, { imageUrl }, (err, str) => {
-      if (err) {
-        throw err;
-      }
-      this.generated.push(str);
-    });
+  public screenshot(template: string, imageUrl: string) {
+    const html = ejs.render(template, { imageUrl });
+    this.generated.push(html);
   }
 
-  public link(text: string, url: string) {
-    ejs.renderFile(this.templateLinkPath, { text, url }, (err, str) => {
-      if (err) {
-        throw err;
-      }
-      this.generated.push(str);
-    });
+  public link(template: string, text: string, link: string) {
+    const html = ejs.render(template, { text, link });
+    this.generated.push(html);
   }
 
   public generate(bodyTemplate: string): string {

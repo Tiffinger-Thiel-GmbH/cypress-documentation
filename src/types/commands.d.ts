@@ -20,6 +20,10 @@ declare namespace Cypress {
      *
      * @param doc - Documentation instance
      * @param text
+     *
+     * @example
+     *
+     * cy.doc(doc, "Some text")
      */
     docText(
       doc: import("../documentation/doc").Doc,
@@ -29,9 +33,6 @@ declare namespace Cypress {
      * This will generate a image in markdown
      *
      * @todo - Add templates later
-     *
-     * @example
-     * cy.docImage(doc, "path/to/image.{jpg|png|...}")
      *
      * @param doc - Documentation instance
      * @param text
