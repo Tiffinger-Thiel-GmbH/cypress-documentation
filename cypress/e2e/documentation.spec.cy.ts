@@ -15,11 +15,11 @@ describe("create documentation", () => {
     cy.docHeader(doc, "Hier ein Link");
     cy.docLink(doc, "Hier gehts zu Google", "https://google.de");
 
-    cy.visit("http://haw-landshut.de/");
-
+    cy.visit("http://aligator.dev/");
+    /* 
     cy.get(
       "#klaro > div > div > div.cm-modal.cm-klaro > div.cm-footer > div > button.cm-btn.cm-btn-decline.cm-btn-danger.cn-decline"
-    ).click();
+    ).click(); */
 
     cy.log("Now take a screenshot of the whole page");
 
@@ -37,6 +37,7 @@ describe("create documentation", () => {
 
     cy.docUList(doc, (uListDoc) => {
       console.log("Here we call a list command inside the callback");
+      cy.docText(uListDoc, "Dies ist ein Text");
       return cy.docLink(
         uListDoc,
         "Dies ist ein link in einer Liste",
