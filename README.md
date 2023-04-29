@@ -16,14 +16,14 @@ Example:
 // First you must create a documentation instance to generate the output and to locale your templates
 // These templates are optional HOWEVER for now you must create templates for each option
 const doc = new Doc({
-  templateTextPath: 'path/to/template/file.ejs';
-  templateHeaderPath: 'path/to/template/file.ejs';
-  templateImagePath: 'path/to/template/file.ejs';
-  templateAlertPath: 'path/to/template/file.ejs';
-  templateLinkPath: 'path/to/template/file.ejs';
-  templateBodyPath: 'path/to/template/file.ejs';
-  templateUlPath: 'path/to/template/file.ejs';
-  templateLiPath: 'path/to/template/file.ejs';
+  templateTextPath: 'path/to/template/file.ejs',
+  templateHeaderPath: 'path/to/template/file.ejs',
+  templateImagePath: 'path/to/template/file.ejs',
+  templateAlertPath: 'path/to/template/file.ejs',
+  templateLinkPath: 'path/to/template/file.ejs',
+  templateBodyPath: 'path/to/template/file.ejs',
+  templateUlPath: 'path/to/template/file.ejs',
+  templateLiPath: 'path/to/template/file.ejs',
 })
 
 
