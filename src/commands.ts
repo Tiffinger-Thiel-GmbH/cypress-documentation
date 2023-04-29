@@ -26,6 +26,7 @@ Cypress.Commands.add("docImage", (doc: Doc, imagePath: string) => {
 });
 
 Cypress.Commands.add("docLink", (doc: Doc, text: string, url: string) => {
+  console.log("LIST COMMAND CALLED: ", doc);
   cy.readFile(__dirname + doc.templateLinkPath).then((str) => {
     doc.link(str, text, url);
   });
@@ -39,9 +40,20 @@ Cypress.Commands.add("docWrite", (doc: Doc, filePath: string) => {
   });
 });
 
-Cypress.Commands.add("docUList", (doc: Doc, listCb: (ulist: UList) => void) => {
-  const uList = new UList(doc);
-  listCb(uList);
+Cypress.Commands.add(
+  "docUList",
+  (doc: Doc, listCb: (uDoc: Doc) => Cypress.Chainable<void>) => {
+    cy.readFile(__dirname + doc.templateUlPath).then((ulString) => {
+      cy.readFile(__dirname + doc.templateLiPath).then((liString) => {
+        const uList = new UList(ulString, liString);
 
-  // here comes the doc to append the ulist
-});
+        listCb(uList.uDoc).then(() => {
+          const uListHtml = uList.generate();
+          if (uListHtml) {
+            doc.uList(uListHtml);
+          }
+        });
+      });
+    });
+  }
+);

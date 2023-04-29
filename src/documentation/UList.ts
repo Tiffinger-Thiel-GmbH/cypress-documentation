@@ -1,17 +1,31 @@
+import * as ejs from "ejs";
 import { Doc } from "./doc";
 
 export class UList {
-  private readonly _uDoc: Doc = new Doc();
-
+  public uDoc: Doc = new Doc();
   private _generated: string[] = [];
 
-  public get uDoc() {
-    return this._uDoc;
+  private readonly _ulTemplate: string;
+  private readonly _ilTemplate: string;
+
+  constructor(ul: string, li: string) {
+    this._ulTemplate = ul;
+    this._ilTemplate = li;
   }
 
-  constructor(doc: Doc) {}
+  private generateLi() {
+    this._generated = this.uDoc.generated.map((h) =>
+      ejs.render(this._ilTemplate, { content: h })
+    );
+  }
 
-  private addLi() {}
-
-  public generateUlist() {}
+  public generate() {
+    this.generateLi();
+    if (this._generated.length < 1) {
+      return;
+    }
+    return ejs.render(this._ulTemplate, {
+      content: this._generated.reduce((prev, curr) => prev + "\n" + curr),
+    });
+  }
 }

@@ -33,6 +33,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:18.15.10"],\
             ["@typescript-eslint/eslint-plugin", "virtual:d95a2557bc86a23ddaea814166dc699f518d048d1c42620d8e351860f3dad0cd6582e5a66991ef0fc3accbded866a9b4ba25bff17d2cd5abcde3e923ed38d35a#npm:5.57.0"],\
             ["@typescript-eslint/parser", "virtual:d95a2557bc86a23ddaea814166dc699f518d048d1c42620d8e351860f3dad0cd6582e5a66991ef0fc3accbded866a9b4ba25bff17d2cd5abcde3e923ed38d35a#npm:5.57.0"],\
+            ["cross-env", "npm:7.0.3"],\
             ["cypress", "npm:12.8.1"],\
             ["ejs", "npm:3.1.9"],\
             ["eslint", "npm:8.36.0"],\
@@ -220,6 +221,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:18.15.10"],\
             ["@typescript-eslint/eslint-plugin", "virtual:d95a2557bc86a23ddaea814166dc699f518d048d1c42620d8e351860f3dad0cd6582e5a66991ef0fc3accbded866a9b4ba25bff17d2cd5abcde3e923ed38d35a#npm:5.57.0"],\
             ["@typescript-eslint/parser", "virtual:d95a2557bc86a23ddaea814166dc699f518d048d1c42620d8e351860f3dad0cd6582e5a66991ef0fc3accbded866a9b4ba25bff17d2cd5abcde3e923ed38d35a#npm:5.57.0"],\
+            ["cross-env", "npm:7.0.3"],\
             ["cypress", "npm:12.8.1"],\
             ["ejs", "npm:3.1.9"],\
             ["eslint", "npm:8.36.0"],\
@@ -987,6 +989,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/core-util-is-npm-1.0.2-9fc2b94dc3-7a4c925b49.zip/node_modules/core-util-is/",\
           "packageDependencies": [\
             ["core-util-is", "npm:1.0.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["cross-env", [\
+        ["npm:7.0.3", {\
+          "packageLocation": "./.yarn/cache/cross-env-npm-7.0.3-96d81820f4-26f2f3ea2a.zip/node_modules/cross-env/",\
+          "packageDependencies": [\
+            ["cross-env", "npm:7.0.3"],\
+            ["cross-spawn", "npm:7.0.3"]\
           ],\
           "linkType": "HARD"\
         }]\
