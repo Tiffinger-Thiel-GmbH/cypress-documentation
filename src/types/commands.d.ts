@@ -114,7 +114,7 @@ declare namespace Cypress {
      */
     docUList(
       doc: import("../documentation/doc").Doc,
-      listCb: (uDoc: import("../documentation/UList").UList) => void
+      listCb: (uDoc: import("../documentation/doc").Doc) => Chainable<any>
     ): Chainable<any>;
   }
 }
