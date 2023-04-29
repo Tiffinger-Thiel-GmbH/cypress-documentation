@@ -1,5 +1,5 @@
 {
-  "name": "@tiffinger-thiel/cy-handbook",
+  "name": "@tiffinger-thiel/cy-how",
   "version": "1.0.0",
   "description": "Cypress plugin to generate handbooks",
   "main": "index.js",
@@ -16,6 +16,7 @@
   "license": "MIT",
   "packageManager": "yarn@3.4.1",
   "scripts": {
+    "build": "rm -rf dist && tsc --project ./tsconfig-build.json",
     "cypress:open": "cypress open",
     "cypress:open:debug": "cross-env CYPRESS_REMOTE_DEBUGGING_PORT=9222 cypress open",
     "build:module": "tsc -p tsconfig.json"

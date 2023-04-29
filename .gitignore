@@ -13,6 +13,7 @@ test.*
 
 !/.eslintrc.js
 
+dist
 
 coverage
 .nyc_output

@@ -1,10 +1,27 @@
-# CHow
+# Cy-How
 
 ## A user documentation generator embedded in Cypress!
 
 ### Installation
 
-Not finished yet
+WARING: NOT FINISHED YET!
+
+1. First install the package with
+
+```bash
+# With npm
+npm i @tiffinger-thiel/cy-how
+
+# With yarn
+
+yarn add @tiffinger-thiel/cy-how
+```
+
+2. Add to `cypress/support/commands.js` the following:
+
+```javascript
+import "@tiffinger-thiel/cy-how/commands";
+```
 
 ### How to use
 
