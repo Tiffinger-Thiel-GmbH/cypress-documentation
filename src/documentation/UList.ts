@@ -1,9 +1,17 @@
 import { Doc } from "./doc";
 
 export class UList {
-  private readonly doc: Doc;
+  private readonly _uDoc: Doc = new Doc();
 
-  constructor(doc: Doc) {
-    this.doc = doc;
+  private _generated: string[] = [];
+
+  public get uDoc() {
+    return this._uDoc;
   }
+
+  constructor(doc: Doc) {}
+
+  private addLi() {}
+
+  public generateUlist() {}
 }

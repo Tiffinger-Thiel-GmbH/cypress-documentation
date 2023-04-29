@@ -39,7 +39,9 @@ Cypress.Commands.add("docWrite", (doc: Doc, filePath: string) => {
   });
 });
 
-Cypress.Commands.add(
-  "docUList",
-  (doc: Doc, listCb: (ulist: UList) => void) => {}
-);
+Cypress.Commands.add("docUList", (doc: Doc, listCb: (ulist: UList) => void) => {
+  const uList = new UList(doc);
+  listCb(uList);
+
+  // here comes the doc to append the ulist
+});
