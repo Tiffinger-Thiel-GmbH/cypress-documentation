@@ -1,4 +1,5 @@
 import * as ejs from "ejs";
+import { Props } from "./types";
 
 export class Doc {
   private readonly _templateTextPath: string;
@@ -47,34 +48,15 @@ export class Doc {
   public get generated(): string[] {
     return this._generated;
   }
-  constructor(templateFile?: Props) {
-    this._templateTextPath =
-      templateFile?.templateTextPath ||
-      "../../cypress/template/components/paragraph.ejs";
-    this._templateHeaderPath =
-      templateFile?.templateHeaderPath ||
-      "../../cypress/template/components/header.ejs";
-    this._templateImagePath =
-      templateFile?.templateImagePath ||
-      "../../cypress/template/components/image.ejs";
-    this._templateAlertPath =
-      templateFile?.templateAlertPath ||
-      "../../cypress/template/components/alert.ejs";
-    this._templateLinkPath =
-      templateFile?.templateLinkPath ||
-      "../../cypress/template/components/link.ejs";
-
-    this._templateBodyPath =
-      templateFile?.templateBodyPath ||
-      "../../cypress/template/documentPage.ejs";
-
-    this._templateUlPath =
-      templateFile?.templateUlPath ||
-      "../../cypress/template/components/uList.ejs";
-
-    this._templateLiPath =
-      templateFile?.templateUlPath ||
-      "../../cypress/template/components/list.ejs";
+  constructor(templateFile: Props) {
+    this._templateTextPath = templateFile.templateTextPath
+    this._templateHeaderPath = templateFile.templateHeaderPath 
+    this._templateImagePath = templateFile.templateImagePath 
+    this._templateAlertPath = templateFile.templateAlertPath
+    this._templateLinkPath = templateFile.templateLinkPath
+    this._templateBodyPath = templateFile.templateBodyPath
+    this._templateUlPath = templateFile.templateUlPath
+    this._templateLiPath = templateFile.templateUlPath
   }
 
   public text(template: string, text: string) {

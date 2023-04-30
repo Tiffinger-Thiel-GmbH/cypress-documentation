@@ -1,7 +1,5 @@
-import "@bahmutov/cy-api/support";
-import "cypress-data-session";
-import { Doc } from "./documentation/doc";
 /// <reference types="cypress" />
+import { Doc } from "./documentation/doc";
 
 declare global {
   namespace Cypress {
