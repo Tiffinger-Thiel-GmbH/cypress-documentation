@@ -1,5 +1,4 @@
-/// <reference path="../../src/types/commands.d.ts" />
-
+// / <reference path="../../src/types/commands.d.ts" />
 
 // ***********************************************
 // This example commands.js shows you how to
@@ -27,4 +26,5 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-import '@tiffinger-thiel/cy-handbook/commands';
+import "../../src";
+import "../../src/commands";
