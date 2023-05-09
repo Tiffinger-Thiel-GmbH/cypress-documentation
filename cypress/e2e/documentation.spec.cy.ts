@@ -1,14 +1,14 @@
 import { Doc } from "../../src/documentation/doc";
 
 const doc = new Doc({
-  templateAlertPath: __dirname + '../../template/components/alert.ejs',
-  templateBodyPath: __dirname + '../../template/documentPage.ejs',
-  templateHeaderPath: '../../template/components/header.ejs',
-  templateImagePath: __dirname + '../../template/components/image.ejs',
-  templateLinkPath: __dirname + '../../template/components/link.ejs',
-  templateLiPath: __dirname + '../../template/components/list.ejs',
-  templateTextPath: __dirname + '../../template/components/paragraph.ejs',
-  templateUlPath: __dirname + '../../template/components/uList.ejs',
+  templateAlertPath: __dirname + '/template/components/alert.ejs',
+  templateBodyPath: __dirname + '/template/documentPage.ejs',
+  templateHeaderPath: __dirname + '/template/components/header.ejs',
+  templateImagePath: __dirname + '/template/components/image.ejs',
+  templateLinkPath: __dirname + '/template/components/link.ejs',
+  templateLiPath: __dirname + '/template/components/list.ejs',
+  templateTextPath: __dirname + '/template/components/paragraph.ejs',
+  templateUlPath: __dirname + '/template/components/uList.ejs',
 });
 
 describe("create documentation", () => {
