@@ -20,6 +20,7 @@ yarn add @tiffinger-thiel/cy-how
 2. Add to `cypress/support/commands.js` the following:
 
 ```javascript
+import "@tiffinger-thiel/cy-how/index";
 import "@tiffinger-thiel/cy-how/commands";
 ```
 
@@ -54,7 +55,7 @@ cy.docLink(doc, "Text for the link", "url")
 cy.docUlist(doc, (uDoc) => {
     cy.docText(uDoc /** You must use the given uDoc to generate inside the list */, "some text inside your list")
     ...
-    // For the last element you must return this for cypress reasons (this will be fixted in the future)
+    // For the last element you must return this for cypress type reasons (this will be fixted in the future)
     return cy.docLink(uDoc, "text for the link", url)
 })
 
@@ -63,6 +64,10 @@ cy.docUlist(doc, (uDoc) => {
 
 cy.docWrite(doc, "path/to/write/html.html")
 ```
+
+### IMPORTANT
+
+This doc instance will we recreated if a new `it.()` block is created. Be ware when your documentation will be written!
 
 ### Development
 
