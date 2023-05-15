@@ -4,18 +4,17 @@ let doc: Doc;
 
 describe("create documentation", () => {
   before(() => {
-   doc = new Doc({
-      templateAlertPath: __dirname + '/template/components/alert.ejs',
-      templateBodyPath: __dirname + '/template/documentPage.ejs',
-      templateHeaderPath: __dirname + '/template/components/header.ejs',
-      templateImagePath: __dirname + '/template/components/image.ejs',
-      templateLinkPath: __dirname + '/template/components/link.ejs',
-      templateLiPath: __dirname + '/template/components/list.ejs',
-      templateTextPath: __dirname + '/template/components/paragraph.ejs',
-      templateUlPath: __dirname + '/template/components/uList.ejs',
+    doc = new Doc({
+      templateAlertPath: __dirname + "/template/components/alert.ejs",
+      templateBodyPath: __dirname + "/template/documentPage.ejs",
+      templateHeaderPath: __dirname + "/template/components/header.ejs",
+      templateImagePath: __dirname + "/template/components/image.ejs",
+      templateLinkPath: __dirname + "/template/components/link.ejs",
+      templateLiPath: __dirname + "/template/components/list.ejs",
+      templateTextPath: __dirname + "/template/components/paragraph.ejs",
+      templateUlPath: __dirname + "/template/components/uList.ejs",
     });
-
-  })
+  });
 
   it("should created a file", () => {
     cy.log("Try to create a new instance of the documentation");
@@ -64,19 +63,13 @@ describe("create documentation", () => {
     // This write the documentation markdown file
   });
 
-  it('should work on other it block', ()=> {
+  it("should work on other it block", () => {
+    cy.docHeader(doc, "After a new it block");
 
-    cy.docHeader(doc, 'After a new it block');
+    cy.docText(doc, "It should work for the same instance");
+  });
 
-
-    cy.docText(doc, 'It should work for the same instance')
-
-
-  })
-
-
-
-  it('should write a file', () => {
+  it("should write a file", () => {
     cy.docWrite(doc, "./test.html");
-  })
+  });
 });
