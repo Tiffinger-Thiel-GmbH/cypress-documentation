@@ -57,6 +57,8 @@ export class Doc {
     this._templateBodyPath = templateFile.templateBodyPath;
     this._templateUlPath = templateFile.templateUlPath;
     this._templateLiPath = templateFile.templateLiPath;
+
+    console.log("New Doc instance have been created!");
   }
 
   public text(template: string, text: string) {
@@ -92,6 +94,9 @@ export class Doc {
   }
 
   get doc() {
+    if (this._generated.length < 1) {
+      console.warn("Array is empty!");
+    }
     return this._generated.reduce((prev, cur) => prev + "\n\n" + cur);
   }
 }
