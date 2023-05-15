@@ -49,7 +49,6 @@ describe("create documentation", () => {
     cy.docHeader(doc, "Hier eine Liste");
 
     cy.docUList(doc, (uListDoc) => {
-      console.log("Here we call a list command inside the callback");
       cy.docText(uListDoc, "Dies ist ein Text");
       return cy.docLink(
         uListDoc,

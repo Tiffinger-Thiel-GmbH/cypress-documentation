@@ -49,14 +49,14 @@ export class Doc {
     return this._generated;
   }
   constructor(templateFile: Props) {
-    this._templateTextPath = templateFile.templateTextPath
-    this._templateHeaderPath = templateFile.templateHeaderPath 
-    this._templateImagePath = templateFile.templateImagePath 
-    this._templateAlertPath = templateFile.templateAlertPath
-    this._templateLinkPath = templateFile.templateLinkPath
-    this._templateBodyPath = templateFile.templateBodyPath
-    this._templateUlPath = templateFile.templateUlPath
-    this._templateLiPath = templateFile.templateUlPath
+    this._templateTextPath = templateFile.templateTextPath;
+    this._templateHeaderPath = templateFile.templateHeaderPath;
+    this._templateImagePath = templateFile.templateImagePath;
+    this._templateAlertPath = templateFile.templateAlertPath;
+    this._templateLinkPath = templateFile.templateLinkPath;
+    this._templateBodyPath = templateFile.templateBodyPath;
+    this._templateUlPath = templateFile.templateUlPath;
+    this._templateLiPath = templateFile.templateLiPath;
   }
 
   public text(template: string, text: string) {

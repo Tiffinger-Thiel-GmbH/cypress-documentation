@@ -2,7 +2,7 @@ import { Doc } from "./documentation/doc";
 import { UList } from "./documentation/UList";
 
 Cypress.Commands.add("docHeader", (doc: Doc, text: string) => {
-  cy.readFile( doc.templateHeaderPath).then((str) => {
+  cy.readFile(doc.templateHeaderPath).then((str) => {
     doc.header(str, text);
   });
 });
@@ -26,7 +26,6 @@ Cypress.Commands.add("docImage", (doc: Doc, imagePath: string) => {
 });
 
 Cypress.Commands.add("docLink", (doc: Doc, text: string, url: string) => {
-  console.log("LIST COMMAND CALLED: ", doc);
   cy.readFile(doc.templateLinkPath).then((str) => {
     doc.link(str, text, url);
   });
