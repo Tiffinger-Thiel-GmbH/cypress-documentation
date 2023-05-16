@@ -7,9 +7,6 @@ export function setUpDocumentationGenerator(
   templates: Template
 ) {
   const doc = new Doc(templates);
-  on("before:spec", () => {
-    console.log("TEST FUNCTION");
-  });
   on("task", {
     documentationParagraph(text: string) {
       doc.text(text);
@@ -17,6 +14,13 @@ export function setUpDocumentationGenerator(
     },
     documentationHeader(text: string) {
       doc.header(text);
+      return null;
+    },
+    documentationAlert(text: string) {
+      doc.alert(text);
+    },
+    documentationLink({ text, url }: { text: string; url: string }) {
+      doc.link(text, url);
       return null;
     },
   });
