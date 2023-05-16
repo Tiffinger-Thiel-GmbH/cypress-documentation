@@ -23,5 +23,9 @@ export function setUpDocumentationGenerator(
       doc.link(text, url);
       return null;
     },
+    documentationImage(imagePath: string) {
+      doc.screenshot(imagePath);
+      return null;
+    },
   });
 }

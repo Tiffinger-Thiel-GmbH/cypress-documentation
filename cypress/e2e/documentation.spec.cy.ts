@@ -1,7 +1,3 @@
-import { Doc } from "../../src/documentation/doc";
-
-let doc: Doc;
-
 describe("create documentation", () => {
   it("should created a file", () => {
     cy.log("Try to create a new instance of the documentation");
