@@ -32,10 +32,12 @@ export class Doc {
   }
 
   public text(text: string) {
+    console.log("🚀 ~ file: doc.ts:35 ~ Doc ~ text ~ text:", text);
     const html = ejs.render(this._templates.templateTextPath, { text });
     this._generated.push(html);
   }
   public header(header: string) {
+    console.log("🚀 ~ file: doc.ts:40 ~ Doc ~ header ~ header:", header);
     const html = ejs.render(this._templates.templateHeaderPath, { header });
     this._generated.push(html);
   }

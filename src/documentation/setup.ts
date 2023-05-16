@@ -6,11 +6,18 @@ export function setUpDocumentationGenerator(
   config: Cypress.PluginConfigOptions,
   templates: Template
 ) {
-  on("before:spec", async (results) => {
-    const doc = new Doc(templates);
-
-    on("task", {
-      generateText(text: string) {},
-    });
+  const doc = new Doc(templates);
+  on("before:spec", () => {
+    console.log("TEST FUNCTION");
+  });
+  on("task", {
+    documentationParagraph(text: string) {
+      doc.text(text);
+      return null;
+    },
+    documentationHeader(text: string) {
+      doc.header(text);
+      return null;
+    },
   });
 }
