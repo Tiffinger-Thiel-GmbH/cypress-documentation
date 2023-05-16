@@ -11,16 +11,7 @@ export class UList {
   constructor(ul: string, li: string, parentDoc: Doc) {
     this._ulTemplate = ul;
     this._ilTemplate = li;
-    this.uDoc = new Doc({
-      templateAlertPath: parentDoc.templateAlertPath,
-      templateBodyPath: parentDoc.templateBodyPath,
-      templateHeaderPath: parentDoc.templateHeaderPath,
-      templateImagePath: parentDoc.templateImagePath,
-      templateLinkPath: parentDoc.templateLinkPath,
-      templateLiPath: parentDoc.templateLiPath,
-      templateTextPath: parentDoc.templateTextPath,
-      templateUlPath: parentDoc.templateUlPath,
-    });
+    this.uDoc = new Doc(parentDoc.templates);
   }
 
   private generateLi() {

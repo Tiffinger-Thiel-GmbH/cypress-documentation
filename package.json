@@ -22,7 +22,8 @@
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix"
   },
   "dependencies": {
-    "ejs": "^3.1.9"
+    "ejs": "^3.1.9",
+    "fs-extra": "^11.1.1"
   },
   "devDependencies": {
     "@types/cypress": "^1.1.3",

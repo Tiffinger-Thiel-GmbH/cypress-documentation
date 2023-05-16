@@ -40,6 +40,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint", "npm:8.39.0"],\
             ["eslint-config-prettier", "virtual:5d53e03d7f27ea96136505b2c1d49e3bda92774746b576ece5b8360cdb1e02f29d925c48465fa8cb279c0e277f55ed0e1b4e3fdc6b10f6f1af2f2736cf7cd476#npm:8.8.0"],\
             ["eslint-plugin-prettier", "virtual:5d53e03d7f27ea96136505b2c1d49e3bda92774746b576ece5b8360cdb1e02f29d925c48465fa8cb279c0e277f55ed0e1b4e3fdc6b10f6f1af2f2736cf7cd476#npm:4.2.1"],\
+            ["fs-extra", "npm:11.1.1"],\
             ["prettier", "npm:2.8.8"],\
             ["typescript", "patch:typescript@npm%3A4.9.5#~builtin<compat/typescript>::version=4.9.5&hash=23ec76"]\
           ],\
@@ -230,6 +231,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint", "npm:8.39.0"],\
             ["eslint-config-prettier", "virtual:5d53e03d7f27ea96136505b2c1d49e3bda92774746b576ece5b8360cdb1e02f29d925c48465fa8cb279c0e277f55ed0e1b4e3fdc6b10f6f1af2f2736cf7cd476#npm:8.8.0"],\
             ["eslint-plugin-prettier", "virtual:5d53e03d7f27ea96136505b2c1d49e3bda92774746b576ece5b8360cdb1e02f29d925c48465fa8cb279c0e277f55ed0e1b4e3fdc6b10f6f1af2f2736cf7cd476#npm:4.2.1"],\
+            ["fs-extra", "npm:11.1.1"],\
             ["prettier", "npm:2.8.8"],\
             ["typescript", "patch:typescript@npm%3A4.9.5#~builtin<compat/typescript>::version=4.9.5&hash=23ec76"]\
           ],\
@@ -1740,6 +1742,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["fs-extra", [\
+        ["npm:11.1.1", {\
+          "packageLocation": "./.yarn/cache/fs-extra-npm-11.1.1-ca44602180-fb883c6824.zip/node_modules/fs-extra/",\
+          "packageDependencies": [\
+            ["fs-extra", "npm:11.1.1"],\
+            ["graceful-fs", "npm:4.2.11"],\
+            ["jsonfile", "npm:6.1.0"],\
+            ["universalify", "npm:2.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
         ["npm:9.1.0", {\
           "packageLocation": "./.yarn/cache/fs-extra-npm-9.1.0-983c2ddb4c-ba71ba32e0.zip/node_modules/fs-extra/",\
           "packageDependencies": [\
