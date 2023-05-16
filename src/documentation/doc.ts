@@ -1,5 +1,5 @@
 import * as ejs from "ejs";
-import { readFileSync } from "fs";
+import { readFileSync, writeFileSync } from "fs";
 import { Template } from "./types";
 
 export class Doc {
@@ -32,12 +32,10 @@ export class Doc {
   }
 
   public text(text: string) {
-    console.log("🚀 ~ file: doc.ts:35 ~ Doc ~ text ~ text:", text);
     const html = ejs.render(this._templates.templateTextPath, { text });
     this._generated.push(html);
   }
   public header(header: string) {
-    console.log("🚀 ~ file: doc.ts:40 ~ Doc ~ header ~ header:", header);
     const html = ejs.render(this._templates.templateHeaderPath, { header });
     this._generated.push(html);
   }
@@ -59,8 +57,16 @@ export class Doc {
     this._generated.push(html);
   }
 
-  public generate(): string {
-    return ejs.render(this._templates.templateBodyPath, { body: this.doc });
+  public generate(outputPath: string): void {
+    console.log(
+      "🚀 ~ file: doc.ts:61 ~ Doc ~ generate ~ outputPath:",
+      outputPath
+    );
+    const html = ejs.render(this._templates.templateBodyPath, {
+      body: this.doc,
+    });
+
+    writeFileSync(outputPath, html);
   }
 
   public list(ulistHtml: string) {

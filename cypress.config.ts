@@ -2,7 +2,12 @@
 import { defineConfig } from "cypress";
 import { setUpDocumentationGenerator } from "./src/documentation/setup";
 
-export default defineConfig({
+interface CustomCypressConfig extends Cypress.ConfigOptions {
+  documentOutputPath?: string;
+}
+
+export default defineConfig<CustomCypressConfig>({
+  documentOutputPath: "output.html",
   e2e: {
     setupNodeEvents(on, config) {
       setUpDocumentationGenerator(on, config, {

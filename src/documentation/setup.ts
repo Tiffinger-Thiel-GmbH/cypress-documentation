@@ -18,6 +18,7 @@ export function setUpDocumentationGenerator(
     },
     documentationAlert(text: string) {
       doc.alert(text);
+      return null;
     },
     documentationLink({ text, url }: { text: string; url: string }) {
       doc.link(text, url);
@@ -27,5 +28,9 @@ export function setUpDocumentationGenerator(
       doc.screenshot(imagePath);
       return null;
     },
+  });
+  on("after:spec", () => {
+    console.log("OUTPUT GENERATE");
+    doc.generate(config.documentOutputPath);
   });
 }

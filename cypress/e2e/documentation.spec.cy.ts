@@ -3,6 +3,11 @@ describe("create documentation", () => {
     cy.log("Try to create a new instance of the documentation");
 
     cy.doc().header("Header TEST");
+
+    cy.doc().paragraph("Dies ist ein Paragraph");
+
+    cy.doc().alert("Dies ist ein Alert");
+
     //   cy.docHeader(doc, "Paragraph");
     //   cy.docText(doc, "some text");
     //   cy.docText(doc, "Noch ein Text");
