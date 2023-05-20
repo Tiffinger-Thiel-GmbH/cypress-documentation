@@ -83,7 +83,7 @@ declare namespace Cypress {
      *  ...
      * })
      */
-    unorderedList(listCallback: () => void): Chainable<Subject>;
+    unorderedList(listCallback: () => void): Chainable<void>;
   }
 
   interface Chainable<Subject> {
@@ -95,14 +95,14 @@ Cypress.Commands.add("doc", () => {
   cy.wrap({ __docCommand: true }).as("docCommand");
 });
 
-Cypress.Commands.add("paragraph", { prevSubject: true }, (subject, text) => {
+Cypress.Commands.add("paragraph", { prevSubject: true }, (_, text) => {
   cy.get("@docCommand").then((docCommand) => {
     expect(docCommand).to.have.property("__docCommand", true);
   });
   cy.task("documentationParagraph", text);
 });
 
-Cypress.Commands.add("header", { prevSubject: true }, (subject, text) => {
+Cypress.Commands.add("header", { prevSubject: true }, (_, text) => {
   cy.get("@docCommand").then((docCommand) => {
     expect(docCommand).to.have.property("__docCommand", true);
   });
@@ -118,7 +118,7 @@ Cypress.Commands.add("link", { prevSubject: true }, (_, text, url) => {
   cy.task("documentationLink", { text, url });
 });
 
-Cypress.Commands.add("alert", { prevSubject: true }, (subject, text) => {
+Cypress.Commands.add("alert", { prevSubject: true }, (_, text) => {
   cy.get("@docCommand").then((docCommand) => {
     expect(docCommand).to.have.property("__docCommand", true);
   });
@@ -126,10 +126,22 @@ Cypress.Commands.add("alert", { prevSubject: true }, (subject, text) => {
   cy.task("documentationAlert", text);
 });
 
-Cypress.Commands.add("image", { prevSubject: true }, (subject, imagePath) => {
+Cypress.Commands.add("image", { prevSubject: true }, (_, imagePath) => {
   cy.get("@docCommand").then((docCommand) => {
     expect(docCommand).to.have.property("__docCommand", true);
   });
 
   cy.task("documentationImage", imagePath);
+});
+
+Cypress.Commands.add("unorderedList", { prevSubject: true }, (_, listCb) => {
+  cy.get("@docCommand").then((docCommand) => {
+    expect(docCommand).to.have.property("__docCommand", true);
+  });
+
+  cy.task("documentationUlist");
+
+  listCb();
+
+  cy.task("documentationEndUList");
 });

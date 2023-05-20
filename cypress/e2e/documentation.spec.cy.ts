@@ -8,6 +8,14 @@ describe("create documentation", () => {
 
     cy.doc().alert("Dies ist ein Alert");
 
+    cy.doc()
+      .screenshot("aligator-dev", { capture: "viewport" })
+      .then(() => {
+        cy.doc().image("cypres/screenshots/aligator-dev.png");
+      });
+
+    cy.doc().link("Hier der Weg zu Google.de", "https://www.google.de/");
+
     //   cy.docHeader(doc, "Paragraph");
     //   cy.docText(doc, "some text");
     //   cy.docText(doc, "Noch ein Text");

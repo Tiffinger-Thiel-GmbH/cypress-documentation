@@ -28,9 +28,9 @@ export function setUpDocumentationGenerator(
       doc.screenshot(imagePath);
       return null;
     },
+    documentationUlist() {},
   });
   on("after:spec", () => {
-    console.log("OUTPUT GENERATE");
     doc.generate(config.documentOutputPath);
   });
 }
