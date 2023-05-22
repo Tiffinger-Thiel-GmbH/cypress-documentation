@@ -1,23 +1,34 @@
 // eslint-disable-next-line no-undef
-import { defineConfig } from "cypress";
+import Cypress from "cypress";
 import { setUpDocumentationGenerator } from "./src/documentation/setup";
 
-interface CustomCypressConfig extends Cypress.ConfigOptions {
+export interface DocCypressConfig extends Cypress.ConfigOptions {
   documentOutputPath?: string;
 }
 
-export default defineConfig<CustomCypressConfig>({
+const docCypressConfig = (config: DocCypressConfig): DocCypressConfig => config;
+
+export default docCypressConfig({
   documentOutputPath: "output.html",
+
   e2e: {
     setupNodeEvents(on, config) {
-      setUpDocumentationGenerator(on, config, {
-        templateTextPath: "cypress/template/components/paragraph.ejs",
-        templateHeaderPath: "cypress/template/components/header.ejs",
-        templateImagePath: "cypress/template/components/image.ejs",
-        templateAlertPath: "cypress/template/components/alert.ejs",
-        templateLinkPath: "cypress/template/components/link.ejs",
-        templateBodyPath: "cypress/template/documentPage.ejs",
-      });
+      setUpDocumentationGenerator(
+        on,
+        config,
+        {
+          templateTextPath: "cypress/template/components/paragraph.ejs",
+          templateHeaderPath: "cypress/template/components/header.ejs",
+          templateImagePath: "cypress/template/components/image.ejs",
+          templateAlertPath: "cypress/template/components/alert.ejs",
+          templateLinkPath: "cypress/template/components/link.ejs",
+          templateBodyPath: "cypress/template/documentPage.ejs",
+        },
+        {
+          templateLiPath: "cypress/template/components/list.ejs",
+          templateUlPath: "cypress/template/components/uList.ejs",
+        }
+      );
     },
   },
 });

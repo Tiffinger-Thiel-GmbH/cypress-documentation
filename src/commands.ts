@@ -84,6 +84,19 @@ declare namespace Cypress {
      * })
      */
     unorderedList(listCallback: () => void): Chainable<void>;
+
+    /**
+     * This write the output file
+     *
+     * @todo - Add templates later
+     *
+     * @param text
+     *
+     * @example
+     *
+     * cy.doc().write()
+     */
+    write(fileName: string): Chainable<void>;
   }
 
   interface Chainable<Subject> {
@@ -132,6 +145,14 @@ Cypress.Commands.add("image", { prevSubject: true }, (_, imagePath) => {
   });
 
   cy.task("documentationImage", imagePath);
+});
+
+Cypress.Commands.add("write", { prevSubject: true }, (_, fileName) => {
+  cy.get("@docCommand").then((docCommand) => {
+    expect(docCommand).to.have.property("__docCommand", true);
+  });
+
+  cy.task("documentationGenerate", fileName);
 });
 
 Cypress.Commands.add("unorderedList", { prevSubject: true }, (_, listCb) => {

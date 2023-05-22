@@ -1,36 +1,70 @@
 import { Doc } from "./doc";
-import { Template } from "./types";
+import { ListTemplates, Template } from "./types";
+import { UList } from "./UList";
+
+let currDoc: Doc;
+let ulist: UList | null = null;
+let doc: Doc;
 
 export function setUpDocumentationGenerator(
   on: Cypress.PluginEvents,
-  config: Cypress.PluginConfigOptions,
-  templates: Template
+  config: Cypress.PluginConfigOptions & { documentOutputPath?: string },
+  templates: Template,
+  listTemplates: ListTemplates
 ) {
-  const doc = new Doc(templates);
+  doc = new Doc(templates);
+  currDoc = doc;
+
   on("task", {
     documentationParagraph(text: string) {
-      doc.text(text);
+      currDoc.text(text);
       return null;
     },
     documentationHeader(text: string) {
-      doc.header(text);
+      currDoc.header(text);
       return null;
     },
     documentationAlert(text: string) {
-      doc.alert(text);
+      currDoc.alert(text);
       return null;
     },
     documentationLink({ text, url }: { text: string; url: string }) {
-      doc.link(text, url);
+      currDoc.link(text, url);
       return null;
     },
     documentationImage(imagePath: string) {
-      doc.screenshot(imagePath);
+      currDoc.screenshot(imagePath);
       return null;
     },
-    documentationUlist() {},
-  });
-  on("after:spec", () => {
-    doc.generate(config.documentOutputPath);
+    documentationUlist() {
+      const ulistDoc = new UList(
+        listTemplates.templateUlPath,
+        listTemplates.templateLiPath,
+        templates
+      );
+      // Set currDoc tu ulist doc
+      ulist = ulistDoc;
+      currDoc = ulistDoc.uDoc;
+      return null;
+    },
+
+    documentationEndUList() {
+      // Generate ulist to init doc
+      if (!ulist) {
+        return;
+      }
+      doc.list(ulist.generate());
+      currDoc = doc;
+      ulist = null;
+      return null;
+    },
+    documentationGenerate(fileName: string) {
+      if (fileName) {
+        doc.generate(fileName);
+      }
+      doc = new Doc(templates);
+      currDoc = new Doc(templates);
+      return null;
+    },
   });
 }

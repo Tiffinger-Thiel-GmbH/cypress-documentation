@@ -8,13 +8,24 @@ describe("create documentation", () => {
 
     cy.doc().alert("Dies ist ein Alert");
 
-    cy.doc()
-      .screenshot("aligator-dev", { capture: "viewport" })
-      .then(() => {
-        cy.doc().image("cypres/screenshots/aligator-dev.png");
-      });
+    cy.visit("https://aligator.dev/");
+
+    cy.screenshot("aligator-dev", {
+      capture: "viewport",
+      overwrite: true,
+    }).then(() => {
+      cy.doc().image("cypress/screenshots/aligator-dev.png");
+    });
 
     cy.doc().link("Hier der Weg zu Google.de", "https://www.google.de/");
+
+    cy.doc().unorderedList(() => {
+      cy.doc().paragraph("First element in the list");
+      cy.doc().link("Second element", "https://google.de");
+      cy.doc().header("Dies ist eine Überschrift in einer Liste");
+    });
+
+    cy.doc().header("After making list");
 
     //   cy.docHeader(doc, "Paragraph");
     //   cy.docText(doc, "some text");
@@ -68,5 +79,15 @@ describe("create documentation", () => {
 
     // it("should write a file", () => {
     //   cy.docWrite(doc, "./test.html");
+  });
+
+  it("should work even session is cleared", () => {
+    Cypress.session.clearAllSavedSessions();
+
+    cy.visit("https://google.de");
+
+    cy.doc().paragraph("This should work even session is cleared");
+
+    cy.doc().write();
   });
 });
