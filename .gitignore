@@ -21,6 +21,9 @@ coverage
 cypress/videos/
 cypress/screenshots/
 
+# output data
+*.html
+
 temp/
 .DS_Store
 
