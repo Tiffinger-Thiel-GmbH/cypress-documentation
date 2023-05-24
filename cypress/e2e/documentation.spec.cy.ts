@@ -21,11 +21,11 @@ describe("create documentation", () => {
       cy.doc().image("cypress/screenshots/aligator-dev.png");
     });
 
-    // cy.doc().unorderedList(() => {
-    //   cy.doc().paragraph("First element in the list");
-    //   cy.doc().link("Second element", "https://google.de");
-    //   cy.doc().header("Dies ist eine Überschrift in einer Liste");
-    // });
+    cy.doc().unorderedList(() => {
+      cy.doc().paragraph("First element in the list");
+      cy.doc().link("Second element", "https://google.de");
+      cy.doc().header("Dies ist eine Überschrift in einer Liste");
+    });
   });
 
   it("should generate more elements", () => {
@@ -35,7 +35,7 @@ describe("create documentation", () => {
     cy.doc().paragraph("Ein weiter paragraph");
   });
   it("should work even session is cleared", () => {
-    // Cypress.session.clearAllSavedSessions();
+    Cypress.session.clearAllSavedSessions();
     cy.visit("https://google.de");
 
     cy.doc().paragraph("This should work even session is cleared");

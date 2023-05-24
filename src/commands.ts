@@ -108,6 +108,7 @@ declare namespace Cypress {
     init(): Chainable<void>;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   interface Chainable<Subject> {
     __docCommand: boolean;
   }
