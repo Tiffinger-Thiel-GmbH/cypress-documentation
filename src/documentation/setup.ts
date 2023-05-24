@@ -8,15 +8,19 @@ let doc: Doc;
 
 export function setUpDocumentationGenerator(
   on: Cypress.PluginEvents,
-  config: Cypress.PluginConfigOptions & { documentOutputPath?: string },
   templates: Template,
   listTemplates: ListTemplates
 ) {
-  doc = new Doc(templates);
-  currDoc = doc;
-
+  on("before:browser:launch", () => {
+    doc = new Doc(templates);
+    currDoc = doc;
+  });
   on("task", {
     documentationParagraph(text: string) {
+      console.log(
+        "🚀 ~ file: setup.ts:20 ~ documentationParagraph ~ text:",
+        text
+      );
       currDoc.text(text);
       return null;
     },

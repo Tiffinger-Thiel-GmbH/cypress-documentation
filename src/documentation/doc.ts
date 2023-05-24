@@ -58,10 +58,6 @@ export class Doc {
   }
 
   public generate(outputPath: string): void {
-    console.log(
-      "🚀 ~ file: doc.ts:61 ~ Doc ~ generate ~ outputPath:",
-      outputPath
-    );
     const html = ejs.render(this._templates.templateBodyPath, {
       body: this.doc,
     });

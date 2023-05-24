@@ -12,10 +12,9 @@ export default docCypressConfig({
   documentOutputPath: "output.html",
 
   e2e: {
-    setupNodeEvents(on, config) {
+    setupNodeEvents(on) {
       setUpDocumentationGenerator(
         on,
-        config,
         {
           templateTextPath: "cypress/template/components/paragraph.ejs",
           templateHeaderPath: "cypress/template/components/header.ejs",
