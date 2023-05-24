@@ -1,15 +1,8 @@
 // eslint-disable-next-line no-undef
-import Cypress from "cypress";
+import { defineConfig } from "cypress";
 import { setUpDocumentationGenerator } from "./src/documentation/setup";
 
-export interface DocCypressConfig extends Cypress.ConfigOptions {
-  documentOutputPath?: string;
-}
-
-const docCypressConfig = (config: DocCypressConfig): DocCypressConfig => config;
-
-export default docCypressConfig({
-  documentOutputPath: "output.html",
+export default defineConfig({
   experimentalInteractiveRunEvents: true,
   e2e: {
     setupNodeEvents(on) {
