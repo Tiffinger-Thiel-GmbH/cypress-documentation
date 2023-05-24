@@ -10,7 +10,7 @@ const docCypressConfig = (config: DocCypressConfig): DocCypressConfig => config;
 
 export default docCypressConfig({
   documentOutputPath: "output.html",
-
+  experimentalInteractiveRunEvents: true,
   e2e: {
     setupNodeEvents(on) {
       setUpDocumentationGenerator(

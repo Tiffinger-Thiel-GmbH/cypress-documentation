@@ -11,36 +11,41 @@ export function setUpDocumentationGenerator(
   templates: Template,
   listTemplates: ListTemplates
 ) {
-  on("before:browser:launch", () => {
-    doc = new Doc(templates);
-    currDoc = doc;
-  });
   on("task", {
+    documentationInitialize() {
+      console.log("🧨 INIT NEW DOCUMENTATION");
+      doc = new Doc(templates);
+      currDoc = doc;
+      return null;
+    },
+
     documentationParagraph(text: string) {
-      console.log(
-        "🚀 ~ file: setup.ts:20 ~ documentationParagraph ~ text:",
-        text
-      );
+      console.log("GENERATE TEXT!");
       currDoc.text(text);
       return null;
     },
     documentationHeader(text: string) {
+      console.log("GENERATE HEADER!");
       currDoc.header(text);
       return null;
     },
     documentationAlert(text: string) {
+      console.log("GENERATE ALERT!");
       currDoc.alert(text);
       return null;
     },
     documentationLink({ text, url }: { text: string; url: string }) {
+      console.log("GENERATE LINK!");
       currDoc.link(text, url);
       return null;
     },
     documentationImage(imagePath: string) {
+      console.log("GENERATE IMAGE!");
       currDoc.screenshot(imagePath);
       return null;
     },
     documentationUlist() {
+      console.log("GENERATE ULIST!");
       const ulistDoc = new UList(
         listTemplates.templateUlPath,
         listTemplates.templateLiPath,
@@ -53,6 +58,7 @@ export function setUpDocumentationGenerator(
     },
 
     documentationEndUList() {
+      console.log("END ULIST!");
       // Generate ulist to init doc
       if (!ulist) {
         return;
@@ -63,6 +69,7 @@ export function setUpDocumentationGenerator(
       return null;
     },
     documentationGenerate(fileName: string) {
+      console.log("GENERATE FILE!");
       if (fileName) {
         doc.generate(fileName);
       }

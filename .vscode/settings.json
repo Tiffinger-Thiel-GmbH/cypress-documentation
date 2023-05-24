@@ -1,6 +1,5 @@
 {
   "search.exclude": {
-    "**/.pnp.*": true,
     "**/.yarn": true
   },
   "editor.formatOnSave": true,
@@ -8,11 +7,9 @@
     "source.fixAll": true,
     "source.organizeImports": true
   },
-  "eslint.nodePath": ".yarn/sdks",
-  "typescript.tsdk": ".yarn/sdks/typescript/lib",
+  "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "prettier.prettierPath": ".yarn/sdks/prettier/index.js"
 }

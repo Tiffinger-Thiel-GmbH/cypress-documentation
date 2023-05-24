@@ -97,6 +97,15 @@ declare namespace Cypress {
      * cy.doc().write()
      */
     write(fileName: string): Chainable<void>;
+
+    /**
+     * Initialise doc generator
+     *
+     *  Initialise the generator needed before begin using generation
+     *
+     */
+
+    init(): Chainable<void>;
   }
 
   interface Chainable<Subject> {
@@ -153,6 +162,14 @@ Cypress.Commands.add("write", { prevSubject: true }, (_, fileName) => {
   });
 
   cy.task("documentationGenerate", fileName);
+});
+
+Cypress.Commands.add("init", { prevSubject: true }, () => {
+  cy.get("@docCommand").then((docCommand) => {
+    expect(docCommand).to.have.property("__docCommand", true);
+  });
+
+  cy.task("documentationInitialize");
 });
 
 Cypress.Commands.add("unorderedList", { prevSubject: true }, (_, listCb) => {
