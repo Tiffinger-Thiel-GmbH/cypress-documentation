@@ -1,5 +1,7 @@
 import * as ejs from "ejs";
+import { readFileSync } from "fs";
 import { Doc } from "./doc";
+import { Template } from "./types";
 
 export class UList {
   public uDoc: Doc;
@@ -8,19 +10,10 @@ export class UList {
   private readonly _ulTemplate: string;
   private readonly _ilTemplate: string;
 
-  constructor(ul: string, li: string, parentDoc: Doc) {
-    this._ulTemplate = ul;
-    this._ilTemplate = li;
-    this.uDoc = new Doc({
-      templateAlertPath: parentDoc.templateAlertPath,
-      templateBodyPath: parentDoc.templateBodyPath,
-      templateHeaderPath: parentDoc.templateHeaderPath,
-      templateImagePath: parentDoc.templateImagePath,
-      templateLinkPath: parentDoc.templateLinkPath,
-      templateLiPath: parentDoc.templateLiPath,
-      templateTextPath: parentDoc.templateTextPath,
-      templateUlPath: parentDoc.templateUlPath,
-    });
+  constructor(ul: string, li: string, templatePath: Template) {
+    this._ulTemplate = readFileSync(ul).toString();
+    this._ilTemplate = readFileSync(li).toString();
+    this.uDoc = new Doc(templatePath);
   }
 
   private generateLi() {
@@ -32,7 +25,7 @@ export class UList {
   public generate() {
     this.generateLi();
     if (this._generated.length < 1) {
-      return;
+      return "";
     }
     return ejs.render(this._ulTemplate, {
       content: this._generated.reduce((prev, curr) => prev + "\n" + curr),

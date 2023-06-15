@@ -1,57 +1,186 @@
-import { Doc } from "./documentation/doc";
-import { UList } from "./documentation/UList";
+/// <reference types="cypress" />
 
-Cypress.Commands.add("docHeader", (doc: Doc, text: string) => {
-  cy.readFile(doc.templateHeaderPath).then((str) => {
-    doc.header(str, text);
-  });
-});
+// eslint-disable-next-line @typescript-eslint/no-namespace
+declare namespace Cypress {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  interface Chainable<Subject> {
+    /**
+     * This is the chainable command for the cypress documentation
+     */
+    doc(): Chainable<Subject & { __docCommand: true }>;
 
-Cypress.Commands.add("docText", (doc: Doc, text: string) => {
-  cy.readFile(doc.templateTextPath).then((str) => {
-    doc.text(str, text);
-  });
-});
+    /**
+     * This will generate a header in markdown
+     *
+     * @todo - Add templates later
+     *
+     * @param text
+     *
+     * @example
+     *
+     * cy.header("Some heading text")
+     */
+    header(text: string): Chainable<void>;
+    /**
+     * This will generate a text in markdown
+     *
+     * @todo - Add templates later
+     *
+     * @param text
+     *
+     * @example
+     *
+     * cy.paragraph("Some text")
+     */
+    paragraph(text: string): Chainable<void>;
+    /**
+     * This will generate a image in markdown
+     *
+     * @todo - Add templates later
+     *
+     * @param text
+     *
+     * @example
+     *
+     * cy.image("path/to/image.{png|jpg|..}")
+     */
+    image(imagePath: string): Chainable<void>;
+    /**
+     * This will alert (quote for now in md) a header in markdown
+     *
+     * @todo - Add templates later
+     *
+     * @param text
+     *
+     * @example
+     *
+     * cy.alert(doc, "text in some alert style")
+     */
+    alert(text: string): Chainable<void>;
 
-Cypress.Commands.add("docAlert", (doc: Doc, text: string) => {
-  cy.readFile(doc.templateAlertPath).then((str) => {
-    doc.alert(str, text);
-  });
-});
+    /**
+     * This will generate a link in markdown
+     *
+     * @todo - Add templates later
+     *
+     * @param text
+     *
+     * @example
+     *
+     * cy.link("http://some_url.de")
+     */
+    link(text: string, url: string): Chainable<void>;
 
-Cypress.Commands.add("docImage", (doc: Doc, imagePath: string) => {
-  cy.readFile(doc.templateImagePath).then((str) => {
-    doc.screenshot(str, imagePath);
-  });
-});
+    /**
+     * This will generate a List in html
+     *
+     * @param listCb
+     *
+     * @example
+     *
+     * cy.unorderedList( () => {
+     *  cy.Text("Dies ist ein Text")
+     *  ...
+     * })
+     */
+    unorderedList(listCallback: () => void): Chainable<void>;
 
-Cypress.Commands.add("docLink", (doc: Doc, text: string, url: string) => {
-  cy.readFile(doc.templateLinkPath).then((str) => {
-    doc.link(str, text, url);
-  });
-});
+    /**
+     * This write the output file
+     *
+     * @todo - Add templates later
+     *
+     * @param text
+     *
+     * @example
+     *
+     * cy.doc().write()
+     */
+    write(fileName: string): Chainable<void>;
 
-Cypress.Commands.add("docWrite", (doc: Doc, filePath: string) => {
-  cy.readFile(doc.templateBodyPath).then((str) => {
-    const html = doc.generate(str);
-    cy.writeFile(filePath, html);
-    cy.log(`Documentation file written to ${filePath}`);
-  });
-});
+    /**
+     * Initialise doc generator
+     *
+     *  Initialise the generator needed before begin using generation
+     *
+     */
 
-Cypress.Commands.add(
-  "docUList",
-  (doc: Doc, listCb: (uDoc: Doc) => Cypress.Chainable<void>) => {
-    cy.readFile(doc.templateUlPath).then((ulString) => {
-      cy.readFile(doc.templateLiPath).then((liString) => {
-        const uList = new UList(ulString, liString, doc);
-        listCb(uList.uDoc).then(() => {
-          const uListHtml = uList.generate();
-          if (uListHtml) {
-            doc.uList(uListHtml);
-          }
-        });
-      });
-    });
+    init(): Chainable<void>;
   }
-);
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  interface Chainable<Subject> {
+    __docCommand: boolean;
+  }
+}
+
+Cypress.Commands.add("doc", () => {
+  cy.wrap({ __docCommand: true }).as("docCommand");
+});
+
+Cypress.Commands.add("paragraph", { prevSubject: true }, (_, text) => {
+  cy.get("@docCommand").then((docCommand) => {
+    expect(docCommand).to.have.property("__docCommand", true);
+  });
+  cy.task("documentationParagraph", text);
+});
+
+Cypress.Commands.add("header", { prevSubject: true }, (_, text) => {
+  cy.get("@docCommand").then((docCommand) => {
+    expect(docCommand).to.have.property("__docCommand", true);
+  });
+
+  cy.task("documentationHeader", text);
+});
+
+Cypress.Commands.add("link", { prevSubject: true }, (_, text, url) => {
+  cy.get("@docCommand").then((docCommand) => {
+    expect(docCommand).to.have.property("__docCommand", true);
+  });
+
+  cy.task("documentationLink", { text, url });
+});
+
+Cypress.Commands.add("alert", { prevSubject: true }, (_, text) => {
+  cy.get("@docCommand").then((docCommand) => {
+    expect(docCommand).to.have.property("__docCommand", true);
+  });
+
+  cy.task("documentationAlert", text);
+});
+
+Cypress.Commands.add("image", { prevSubject: true }, (_, imagePath) => {
+  cy.get("@docCommand").then((docCommand) => {
+    expect(docCommand).to.have.property("__docCommand", true);
+  });
+
+  cy.task("documentationImage", imagePath);
+});
+
+Cypress.Commands.add("write", { prevSubject: true }, (_, fileName) => {
+  cy.get("@docCommand").then((docCommand) => {
+    expect(docCommand).to.have.property("__docCommand", true);
+  });
+
+  cy.task("documentationGenerate", fileName);
+});
+
+Cypress.Commands.add("init", { prevSubject: true }, () => {
+  cy.get("@docCommand").then((docCommand) => {
+    expect(docCommand).to.have.property("__docCommand", true);
+  });
+
+  cy.task("documentationInitialize");
+});
+
+Cypress.Commands.add("unorderedList", { prevSubject: true }, (_, listCb) => {
+  cy.get("@docCommand").then((docCommand) => {
+    expect(docCommand).to.have.property("__docCommand", true);
+  });
+
+  cy.task("documentationUlist");
+
+  listCb();
+
+  cy.task("documentationEndUList");
+});
