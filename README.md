@@ -6,8 +6,6 @@
 
 1. First install the package with
 
-#### Important - this plugin is at the moment not accessible via npm repository
-
 ```bash
 # With npm
 npm i @tiffinger-thiel/cy-how

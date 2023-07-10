@@ -1,20 +1,22 @@
 {
   "name": "@tiffinger-thiel/cy-how",
   "version": "1.0.0",
-  "description": "Cypress plugin to generate handbooks",
-  "main": "dist/index.js",
-  "types": "dist/index",
+  "description": "Cypress plugin to generate documentation",
   "files": [
     "**/*.js",
-    "index.d.ts",
-    "lib",
-    "src",
-    "index.ts",
-    "commands.ts"
+    "/dist"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "author": "Nico Eberl",
   "license": "MIT",
   "packageManager": "yarn@3.4.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Tiffinger-Thiel-GmbH/cypress-documentation"
+  },
+  "keywords": ["cypress", "documentation", "test", "e2e", "generate", "doc", "documentation-generator"],
   "scripts": {
     "build": "rm -rf dist && tsc --project ./tsconfig-build.json",
     "cypress:open": "cypress open",
