@@ -127,7 +127,6 @@ yarn
 # open cypress
 yarn cypress:open
 
-# build (not finished yet)
-
+# build
 yarn build
 ```
